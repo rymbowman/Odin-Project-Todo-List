@@ -47,12 +47,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const inputCategory = document.createElement('input');
             inputCategory.type = 'text';
             inputCategory.name = 'category';
+            inputCategory.maxLength = 40;
             inputCategory.placeholder = 'category';
 
             const inputPriority = document.createElement('input');
-            inputPriority.type = 'range';
+            inputPriority.type = 'number';
             inputPriority.name = 'priority';
-            inputPriority.placeholder = 'Priority level (1:lowest - 5:highest)';
+            inputPriority.pattern = '[1-5]{1}';
+            inputPriority.title = 'Please select a number between 1(lowest) and 5(highest)';
+            inputPriority.placeholder = '1(lowest) - 5(highest)'
 
             const inputNotes = document.createElement('input');
             inputNotes.type = 'text';
