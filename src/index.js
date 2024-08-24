@@ -23,15 +23,46 @@ document.addEventListener('DOMContentLoaded', ()=>{
         todoBtn.addEventListener('click', ()=>{
             //creates form
             const todoForm = document.createElement('form');
-            
+            todoForm.classList.add('todo-form');
+
             //creates input items
-            const inputName = document.createElement('input');
-            inputName.type = 'text';
-            inputName.name = 'name';
-            inputName.placeholder = 'name'
+            const inputTitle = document.createElement('input');
+            inputTitle.type = 'text';
+            inputTitle.name = 'title';
+            inputTitle.placeholder = 'title'
+
+            const inputDescription = document.createElement('input');
+            inputDescription.type = 'text';
+            inputDescription.name = 'description';
+            inputDescription.placeholder = 'description of task';
+
+            const inputDueDate = document.createElement('input');
+            inputDueDate.type = 'datetime-local';
+            inputDueDate.name = 'due-date';
+            inputDueDate.placeholder = 'Due by:';
+
+            const inputCategory = document.createElement('input');
+            inputCategory.type = 'text';
+            inputCategory.name = 'category';
+            inputCategory.placeholder = 'category';
+
+            const inputPriority = document.createElement('input');
+            inputPriority.type = 'range';
+            inputPriority.name = 'priority';
+            inputPriority.placeholder = 'Priority level (1:lowest - 5:highest)';
+
+            const inputNotes = document.createElement('input');
+            inputNotes.type = 'text';
+            inputNotes.name = 'notes';
+            inputNotes.placeholder = 'Notes about task(optional)';
     
             mainContent.appendChild(todoForm);
-            todoForm.appendChild(inputName)
+            todoForm.appendChild(inputTitle);
+            todoForm.appendChild(inputDescription);
+            todoForm.appendChild(inputDueDate);
+            todoForm.appendChild(inputCategory);
+            todoForm.appendChild(inputPriority);
+            todoForm.appendChild(inputNotes);
         })
     }
 
