@@ -6,17 +6,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     const mainContent = document.querySelector('.content');
     const pageTitle = document.createElement('h1');
-    pageTitle.innerHTML = "Todo List";
+    pageTitle.innerHTML = "To-do List";
     mainContent.appendChild(pageTitle);
     
     const pageHeadline = document.createElement('h4');
     pageHeadline.classList.add('page-headline')
-    pageHeadline.innerHTML = "Conquer today!";
+    pageHeadline.innerHTML = "Conquer Today!";
     mainContent.appendChild(pageHeadline);
 
     const todoBtn = document.createElement('button')
     todoBtn.classList.add('todo-btn');
-    todoBtn.innerHTML = "Add item to list"
+    todoBtn.innerHTML = "Add Task"
     mainContent.appendChild(todoBtn);
     
     function renderForm(){
@@ -77,5 +77,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
-    
+    function createTask(title, description, dueDate, category, priority, notes) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.category = category;
+        this.priority = priority;
+        this.notes = notes;
+    }
 
