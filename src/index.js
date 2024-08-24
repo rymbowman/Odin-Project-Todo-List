@@ -58,6 +58,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
             inputNotes.type = 'text';
             inputNotes.name = 'notes';
             inputNotes.placeholder = 'Notes about task(optional)';
+
+            const formSubmitBtn = document.createElement('input');
+            formSubmitBtn.type = 'submit';
+            formSubmitBtn.name = 'submit-form';
+            formSubmitBtn.placeholder = 'Submit';
     
             //appends all input items into the todo form
             mainContent.appendChild(todoForm);
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             todoForm.appendChild(inputCategory);
             todoForm.appendChild(inputPriority);
             todoForm.appendChild(inputNotes);
+            todoForm.appendChild(formSubmitBtn);
         })
     }
 
