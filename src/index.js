@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     todoBtn.innerHTML = "Add Task"
     mainContent.appendChild(todoBtn);
     
+    
     function renderForm(){
         todoBtn.addEventListener('click', ()=>{
             //creates form
@@ -30,45 +31,49 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const inputTitle = document.createElement('input');
             inputTitleLabel.htmlFor = 'title';
             inputTitleLabel.innerHTML = 'Title: ';
-            inputTitle.type = 'text';
-            inputTitle.name = 'title';
             inputTitle.placeholder = 'title'
+            inputTitle.setAttribute('type', 'text');
+            inputTitle.setAttribute('name', 'title');
+            inputTitle.setAttribute('id', 'title');
 
             const inputDescription = document.createElement('input');
-            inputDescription.type = 'text';
-            inputDescription.name = 'description';
             inputDescription.placeholder = 'description of task';
+            inputDescription.setAttribute('type', 'text');
+            inputDescription.setAttribute('name', 'description');
+            inputDescription.setAttribute('id', 'description');
 
             const inputDueDate = document.createElement('input');
-            inputDueDate.type = 'datetime-local';
-            inputDueDate.name = 'due-date';
             inputDueDate.placeholder = 'Due by:';
+            inputDueDate.setAttribute('type', 'date');
+            inputDueDate.setAttribute('name', 'due-date');
+            inputDueDate.setAttribute('id', 'due-date');
 
             const inputCategory = document.createElement('input');
-            inputCategory.type = 'text';
-            inputCategory.name = 'category';
             inputCategory.maxLength = 40;
             inputCategory.placeholder = 'category';
+            inputCategory.setAttribute('type', 'text');
+            inputCategory.setAttribute('name', 'category');
+            inputCategory.setAttribute('id', 'category');
 
             const inputPriority = document.createElement('input');
-            inputPriority.type = 'number';
-            inputPriority.name = 'priority';
-            inputPriority.pattern = '[1-5]{1}';
-            inputPriority.title = 'Please select a number between 1(lowest) and 5(highest)';
             inputPriority.placeholder = '1(lowest) - 5(highest)'
+            inputPriority.setAttribute('type', 'number');
+            inputPriority.setAttribute('name', 'priority');
+            inputPriority.setAttribute('id', 'priority');
 
             const inputNotes = document.createElement('input');
-            inputNotes.type = 'text';
-            inputNotes.name = 'notes';
+            inputNotes.max = 100;
             inputNotes.placeholder = 'Notes about task(optional)';
+            inputNotes.setAttribute('type', 'text');
+            inputNotes.setAttribute('name', 'notes');
+            inputNotes.setAttribute('id', 'notes');
 
             const formSubmitBtn = document.createElement('input');
-            formSubmitBtn.type = 'submit';
-            formSubmitBtn.name = 'submit-form';
             formSubmitBtn.placeholder = 'Submit';
-    
+            formSubmitBtn.setAttribute('type', 'submit');
+            formSubmitBtn.setAttribute('id', 'form-submit-btn');
+
             //appends all input items into the todo form
-            mainContent.appendChild(todoForm);
             todoForm.appendChild(inputTitleLabel);
             todoForm.appendChild(inputTitle);
             todoForm.appendChild(inputDescription);
@@ -77,10 +82,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
             todoForm.appendChild(inputPriority);
             todoForm.appendChild(inputNotes);
             todoForm.appendChild(formSubmitBtn);
+            mainContent.appendChild(todoForm);
+
+            //handles the formSubmitFunction on button click of this form
+            document.querySelector('#form-submit-btn').addEventListener('click', handleFormSubmit);
         })
     }
 
-    function createTask(title, description, dueDate, category, priority, notes) {
+    function CreateTask(title, description, dueDate, category, priority, notes) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -89,3 +98,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
         this.notes = notes;
     }
 
+    function handleFormSubmit(event) {
+        //prevents default action of form submitting before being able to acquire values of inputs
+        event.preventDefault();
+
+        //creates variables for each value from the form item
+        let titleValue = document.getElementById('title').value;
+        let descriptionValue = document.getElementById('description').value;
+        let dueDateValue = document.getElementById('due-date').value;
+        let categoryValue = document.getElementById('category').value;
+        let priorityValue = document.getElementById('priority').value;
+        let notesValue = document.getElementById('notes').value;
+
+        //sets variable 'newTask' equal to the object constructor for creating tasks
+        let newTask = new CreateTask(titleValue, descriptionValue, dueDateValue, categoryValue, priorityValue, notesValue);
+        console.log(newTask);
+    }
