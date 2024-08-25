@@ -110,19 +110,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let priorityValue = document.getElementById('priority').value;
         let notesValue = document.getElementById('notes').value;
 
-        //sets variable 'newTask' equal to the object constructor for creating tasks
+        //sets variable 'newTask' equal to the object constructor for creating tasks into the 
         let newTask = new CreateTask(titleValue, descriptionValue, dueDateValue, categoryValue, priorityValue, notesValue);
         console.log(newTask);
         let newPost = document.createElement('div');
         newPost.classList.add('new-post');
-        newPost.innerHTML = 
-            `
+        newPost.innerHTML = `
             <p>Task: ${newTask.title}</p>
-             <p>Description: ${newTask.description}</p>
-             <p>Category: ${newTask.category}</p>
-             <p>Due: ${newTask.dueDate}</p>
-             <p>Priority Level: ${newTask.priority}</p>
-             <p>Notes: ${newTask.notes}</p>
-             `
+            <p>Description: ${newTask.description}</p>
+            <p>Category: ${newTask.category}</p>
+            <p>Due: ${newTask.dueDate}</p>
+            <p>Priority Level: ${newTask.priority}</p>
+            <p>Notes: ${newTask.notes}</p>
+            `
         mainContent.appendChild(newPost);
     }
