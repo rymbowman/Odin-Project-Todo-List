@@ -19,13 +19,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     todoBtn.innerHTML = "Add Task"
     mainContent.appendChild(todoBtn);
     
-    
     function renderForm(){
         todoBtn.addEventListener('click', ()=>{
             //creates form
             const todoForm = document.createElement('form');
             todoForm.classList.add('todo-form');
-
             //creates input items
             const inputTitleLabel = document.createElement('label');
             const inputTitle = document.createElement('input');
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             mainContent.appendChild(todoForm);
 
             //handles the formSubmitFunction on button click of this form
-            document.querySelector('#form-submit-btn').addEventListener('click', handleFormSubmit);
+            document.querySelector('#form-submit-btn').addEventListener('click', (event) => handleFormSubmit(event, todoForm));
         })
     }
 
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         this.notes = notes;
     }
 
-    function handleFormSubmit(event) {
+    function handleFormSubmit(event, form) {
         //prevents default action of form submitting before being able to acquire values of inputs
         event.preventDefault();
 
@@ -124,4 +122,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             <p>Notes: ${newTask.notes}</p>
             `
         mainContent.appendChild(newPost);
+
+        form.reset();
+        form.remove();
     }
