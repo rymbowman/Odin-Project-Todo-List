@@ -25,10 +25,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const todoForm = document.createElement('form');
             todoForm.classList.add('todo-form');
             //creates input items
-            const inputTitleLabel = document.createElement('label');
             const inputTitle = document.createElement('input');
-            inputTitleLabel.htmlFor = 'title';
-            inputTitleLabel.innerHTML = 'Title: ';
             inputTitle.placeholder = 'title'
             inputTitle.setAttribute('type', 'text');
             inputTitle.setAttribute('name', 'title');
@@ -72,7 +69,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             formSubmitBtn.setAttribute('id', 'form-submit-btn');
 
             //appends all input items into the todo form
-            todoForm.appendChild(inputTitleLabel);
             todoForm.appendChild(inputTitle);
             todoForm.appendChild(inputDescription);
             todoForm.appendChild(inputDueDate);
