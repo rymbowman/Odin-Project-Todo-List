@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     newTaskContent.appendChild(completedTasks);
     completedTasks.appendChild(completedTasksTitle);
 
+    let todoTasks = [];
     function renderForm(){
         todoBtn.addEventListener('click', ()=>{
             //creates form
@@ -133,11 +134,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
             <p>Deadline: ${newTask.dueDate}</p>
             <p>Priority Level: ${newTask.priority}</p>
             <p>Notes: ${newTask.notes}</p>
-            <input type="checkbox" id="check-complete">
+            <input type="checkbox" class="completion-check">
+            <label>Complete</label>
             `
         
         incompletedTasks.appendChild(newPost);
 
         form.reset();
         form.remove();
+        const checkBox = newPost.querySelector('.completion-check');
+        checkBox.addEventListener('change', checkCompletionStatus);
+    }
+
+    function checkCompletionStatus(event) {
+        const taskElement = event.target.parentElement; // Get the task element
+        if (event.target.checked) {
+            console.log('Checked');
+            incompletedTasks.removeChild(taskElement); // Remove from incomplete section
+            completedTasks.appendChild(taskElement); // Add to completed section
+        } else {
+            console.log('Not checked yet');
+        }
     }
