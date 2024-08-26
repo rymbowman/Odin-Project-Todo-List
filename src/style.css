@@ -38,9 +38,11 @@ body {
 }
 
 .new-post {
-    background-color: blue;
-    border-radius: 10px;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    border: 1px solid black;
+    outline: 1px solid black;
 }
 
 .tasks-content {

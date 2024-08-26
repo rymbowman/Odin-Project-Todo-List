@@ -127,17 +127,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
         console.log(newTask);
         let newPost = document.createElement('div');
         newPost.classList.add('new-post');
-        newPost.innerHTML = `
-            <h2>${newTask.title}</h2>
-            <p>${newTask.description}</p>
-            <p>Category: ${newTask.category}</p>
-            <p>Deadline: ${newTask.dueDate}</p>
-            <p>Priority Level: ${newTask.priority}</p>
-            <p>Notes: ${newTask.notes}</p>
-            <input type="checkbox" class="completion-check">
-            <label>Complete</label>
-            `
-        
+        newPost.innerHTML = 
+           `<div>${newTask.title}</div>
+            <div>${newTask.description}</div>
+            <div>${newTask.category}</div>
+            <div>${newTask.dueDate}</div>
+            <div>${newTask.priority}</div>
+            <div>${newTask.notes}</div>
+            <div>
+                <input type="checkbox" class="completion-check">
+                <label>Complete</label>
+            </div>`
+            console.log(newPost)
         incompletedTasks.appendChild(newPost);
 
         form.reset();
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     function checkCompletionStatus(event) {
-        const taskElement = event.target.parentElement; // Get the task element
+        const taskElement = event.target.closest('.new-post'); // Get the task element
         if (event.target.checked) {
             console.log('Checked');
             incompletedTasks.removeChild(taskElement); // Remove from incomplete section
