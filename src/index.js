@@ -21,7 +21,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     headerContent.appendChild(todoBtn);
     
     const newTaskContent = document.querySelector('.tasks-content');
-    newTaskContent.classList.add('new-tasks-content');
+    
+    const incompletedTasks = document.createElement('div');
+    incompletedTasks.classList.add('incompleted-tasks-container')
+    const incompletedTasksTitle = document.createElement('h2');
+    incompletedTasksTitle.innerHTML = 'Incomplete';
+    newTaskContent.appendChild(incompletedTasks);
+    incompletedTasks.appendChild(incompletedTasksTitle);
+
+    const completedTasks = document.createElement('div');
+    completedTasks.classList.add('completed-tasks-container')
+    const completedTasksTitle = document.createElement('h2');
+    completedTasksTitle.innerHTML = 'Complete';
+    newTaskContent.appendChild(completedTasks);
+    completedTasks.appendChild(completedTasksTitle);
 
     function renderForm(){
         todoBtn.addEventListener('click', ()=>{
@@ -122,7 +135,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
             <p>Notes: ${newTask.notes}</p>
             <input type="checkbox" id="check-complete">
             `
-        newTaskContent.appendChild(newPost);
+        
+        incompletedTasks.appendChild(newPost);
 
         form.reset();
         form.remove();
