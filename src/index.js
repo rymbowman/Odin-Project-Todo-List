@@ -4,21 +4,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
     renderForm();
     })
     
-    const mainContent = document.querySelector('.content');
+    const headerContent = document.querySelector('.header-content');
     const pageTitle = document.createElement('h1');
+    pageTitle.setAttribute('id', 'page-title');
     pageTitle.innerHTML = "To-do List";
-    mainContent.appendChild(pageTitle);
+    headerContent.appendChild(pageTitle);
     
     const pageHeadline = document.createElement('h4');
-    pageHeadline.classList.add('page-headline')
+    pageHeadline.setAttribute('id', 'page-headline');
     pageHeadline.innerHTML = "Conquer Today!";
-    mainContent.appendChild(pageHeadline);
+    headerContent.appendChild(pageHeadline);
 
     const todoBtn = document.createElement('button')
     todoBtn.classList.add('todo-btn');
     todoBtn.innerHTML = "Add Task"
-    mainContent.appendChild(todoBtn);
+    headerContent.appendChild(todoBtn);
     
+    const newTaskContent = document.querySelector('.tasks-content');
+    newTaskContent.classList.add('new-tasks-content');
+
     function renderForm(){
         todoBtn.addEventListener('click', ()=>{
             //creates form
@@ -76,7 +80,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             todoForm.appendChild(inputPriority);
             todoForm.appendChild(inputNotes);
             todoForm.appendChild(formSubmitBtn);
-            mainContent.appendChild(todoForm);
+            headerContent.appendChild(todoForm);
 
             //handles the formSubmitFunction on button click of this form
             document.querySelector('#form-submit-btn').addEventListener('click', (event) => handleFormSubmit(event, todoForm));
@@ -110,14 +114,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let newPost = document.createElement('div');
         newPost.classList.add('new-post');
         newPost.innerHTML = `
-            <p>Task: ${newTask.title}</p>
-            <p>Description: ${newTask.description}</p>
+            <h2>${newTask.title}</h2>
+            <p>${newTask.description}</p>
             <p>Category: ${newTask.category}</p>
-            <p>Due: ${newTask.dueDate}</p>
+            <p>Deadline: ${newTask.dueDate}</p>
             <p>Priority Level: ${newTask.priority}</p>
             <p>Notes: ${newTask.notes}</p>
+            <input type="checkbox" id="check-complete">
             `
-        mainContent.appendChild(newPost);
+        newTaskContent.appendChild(newPost);
 
         form.reset();
         form.remove();
