@@ -18,6 +18,8 @@ body {
     letter-spacing: 5px;
     font-family: "Kaushan Script", cursive;
     color: #50C878;
+    display: flex;
+    align-items: flex-end;
 }
 
 #page-headline {
@@ -27,12 +29,13 @@ body {
 
 .todo-btn {
     font-family: "Poppins", sans-serif;
-    padding: 10px;
+    width: 125px;
+    padding: 15px 10px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
-    box-shadow: 2.5px 2.5px 2.5px;
-    background-color: #72C3DC;
+    box-shadow: 3px 3px 5px;
+    background-color: #50C878;
 }
 
 .todo-form {
@@ -89,17 +92,18 @@ body {
 }
 
 .incompleted-tasks-container{
-    width: 50%;
+    width: 65%;
     text-align: center;
     font-family: "Poppins", sans-serif;
 }
 
 .completed-tasks-container {
-    width: 50%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     text-align: center;
     font-family: "Poppins", sans-serif;
+    border-left: 1px solid #1A3B5D;
 }
 
 .completion-check {
