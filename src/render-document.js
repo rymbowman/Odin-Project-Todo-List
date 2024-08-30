@@ -1,3 +1,5 @@
+import { displayForm } from "./display-form";
+
 export function renderHeader() {
   const headerContent = document.querySelector(".header-content");
   const pageTitle = document.createElement("h1");
@@ -12,10 +14,11 @@ export function renderHeader() {
   pageHeadline.innerHTML = "Achieve More with Every Checkmark";
   headerContent.appendChild(pageHeadline);
 
-  const todoBtn = document.createElement("button");
-  todoBtn.classList.add("todo-btn");
-  todoBtn.innerHTML = "Add Task";
-  headerContent.appendChild(todoBtn);
+  const addTaskBtn = document.createElement("button");
+  addTaskBtn.classList.add("todo-btn");
+  addTaskBtn.innerHTML = "Add Task";
+  headerContent.appendChild(addTaskBtn);
+  addTaskBtn.addEventListener("click", displayForm);
 }
 
 export function renderBody() {
