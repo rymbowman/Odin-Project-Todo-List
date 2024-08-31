@@ -1,5 +1,5 @@
 import "./style.css";
-import { renderHeader, renderBody } from "./render-document";
+import { renderHeader, renderBody, renderTaskDetails } from "./render-document";
 import "./form-handler.js";
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -1,5 +1,5 @@
 import { displayForm } from "./form-handler";
-
+import { CreateTask } from "./task";
 export function renderHeader() {
   const headerContent = document.querySelector(".header-content");
   const pageTitle = document.createElement("h1");
@@ -37,4 +37,25 @@ export function renderBody() {
   completedTasksTitle.innerHTML = "Complete";
   newTaskContent.appendChild(completedTasks);
   completedTasks.appendChild(completedTasksTitle);
+}
+
+export function renderTaskDetails() {
+  let taskPopup = document.createElement("div");
+  taskPopup.classList.add("task-details-popup");
+  taskPopup.innerHTML = `
+            <div id="popup-content">
+                <div>${CreateTask.dueDate}</div>
+                <div>${CreateTask.priority}</div>
+                <div>${CreateTask.notes}</div>
+                <button type="button" id="close-popup-btn">
+                    Close
+                </button>
+            </div>`;
+  document.body.appendChild(taskPopup);
+  taskPopup.style.display = "flex";
+  const closeTaskInfoBtn = taskPopup.querySelector("#close-popup-btn");
+  closeTaskInfoBtn.addEventListener("click", () => {
+    console.log("button clicked");
+    taskPopup.style.display = "none";
+  });
 }

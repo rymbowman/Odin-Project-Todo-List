@@ -1,4 +1,5 @@
 import { CreateTask } from "./task";
+import { renderTaskDetails } from "./render-document";
 
 export function createInput({ type, name, id, placeholder = "", maxLength }) {
   const input = document.createElement("input");
@@ -97,6 +98,10 @@ export function formSubmit(event, form) {
     ".incompleted-tasks-container"
   );
   incompletedTasks.appendChild(newPost);
+
+  const taskInfoBtn = document
+    .querySelector("#info-btn")
+    .addEventListener("click", () => renderTaskDetails());
   form.reset();
   form.remove();
   /*
