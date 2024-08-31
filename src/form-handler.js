@@ -87,9 +87,5 @@ export function formSubmit(event, form) {
   form.reset();
   form.remove();
   /*
-    const checkBox = newPost.querySelector(".completion-check");
-    checkBox.addEventListener("change", checkCompletionStatus);
-  
-    const infoBtn = document.querySelector("#info-btn");
-    infoBtn.addEventListener("click", renderTaskDetails(newTask));*/
+   */
 }

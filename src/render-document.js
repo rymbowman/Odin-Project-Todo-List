@@ -1,5 +1,6 @@
 import { displayForm } from "./form-handler";
 import { CreateTask } from "./task";
+
 export function renderHeader() {
   const headerContent = document.querySelector(".header-content");
   const pageTitle = document.createElement("h1");
@@ -59,6 +60,19 @@ export function renderNewTask(newTask) {
   const taskInfoBtn = document
     .querySelector("#info-btn")
     .addEventListener("click", () => renderTaskDetails(newTask));
+
+  const checkBox = newPost.querySelector(".completion-check");
+  const completedTasks = document.querySelector(".completed-tasks-container");
+  checkBox.addEventListener("change", (event) => {
+    const taskElement = event.target.closest(".new-post"); // Get the task element
+    if (event.target.checked) {
+      console.log("Checked");
+      incompletedTasks.removeChild(taskElement); // Remove from incomplete section
+      completedTasks.appendChild(taskElement); // Add to completed section
+    } else {
+      console.log("Not checked yet");
+    }
+  });
 }
 
 export function renderTaskDetails(newTask) {
