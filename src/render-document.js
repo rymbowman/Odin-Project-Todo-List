@@ -39,14 +39,36 @@ export function renderBody() {
   completedTasks.appendChild(completedTasksTitle);
 }
 
-export function renderTaskDetails() {
+export function renderNewTask(newTask) {
+  const infoIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);filter: brightness(150%);transition: filter 0.3s;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M11 11h2v6h-2zm0-4h2v2h-2z"></path></svg>';
+  let newPost = document.createElement("div");
+  newPost.classList.add("new-post");
+  newPost.innerHTML = `<div>${newTask.title}</div>
+              <button type="button" id="info-btn">
+                  ${infoIcon}
+              </button>
+              <div>
+                  <input type="checkbox" class="completion-check">
+                  <label>Complete</label>
+              </div>`;
+  const incompletedTasks = document.querySelector(
+    ".incompleted-tasks-container"
+  );
+  incompletedTasks.appendChild(newPost);
+  const taskInfoBtn = document
+    .querySelector("#info-btn")
+    .addEventListener("click", () => renderTaskDetails(newTask));
+}
+
+export function renderTaskDetails(newTask) {
   let taskPopup = document.createElement("div");
   taskPopup.classList.add("task-details-popup");
   taskPopup.innerHTML = `
             <div id="popup-content">
-                <div>${CreateTask.dueDate}</div>
-                <div>${CreateTask.priority}</div>
-                <div>${CreateTask.notes}</div>
+                <div>${newTask.dueDate}</div>
+                <div>${newTask.priority}</div>
+                <div>${newTask.notes}</div>
                 <button type="button" id="close-popup-btn">
                     Close
                 </button>
