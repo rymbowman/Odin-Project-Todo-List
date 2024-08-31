@@ -130,9 +130,25 @@ body {
     width: 35%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     font-family: "Poppins", sans-serif;
     border-left: 1px solid #1A3B5D;
+}
+
+#clear-completed-tasks-btn{
+    font-family: "Poppins", sans-serif;
+    background-color: #FF6F3C;
+    width: 125px;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 3px 3px 5px;
+}
+
+#clear-completed-tasks-btn:hover{
+    filter: brightness(150%);
 }
 
 .completion-check {
