@@ -36,8 +36,11 @@ export function renderBody() {
   completedTasks.classList.add("completed-tasks-container");
   const completedTasksTitle = document.createElement("h2");
   completedTasksTitle.innerHTML = "Complete";
-  newTaskContent.appendChild(completedTasks);
+  const clearCompletedTasks = document.createElement("button");
+  clearCompletedTasks.innerHTML = "Clear";
   completedTasks.appendChild(completedTasksTitle);
+  completedTasks.appendChild(clearCompletedTasks);
+  newTaskContent.appendChild(completedTasks);
 }
 
 export function renderNewTask(newTask) {
