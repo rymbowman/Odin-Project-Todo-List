@@ -29,18 +29,23 @@ export function renderBody() {
   incompletedTasks.classList.add("incompleted-tasks-container");
   const incompletedTasksTitle = document.createElement("h2");
   incompletedTasksTitle.innerHTML = "Incomplete";
-  newTaskContent.appendChild(incompletedTasks);
   incompletedTasks.appendChild(incompletedTasksTitle);
+  newTaskContent.appendChild(incompletedTasks);
 
-  const completedTasks = document.createElement("div");
-  completedTasks.classList.add("completed-tasks-container");
+  const completedTasksContainer = document.createElement("div");
+  completedTasksContainer.classList.add("completed-tasks-container");
   const completedTasksTitle = document.createElement("h2");
   completedTasksTitle.innerHTML = "Complete";
-  const clearCompletedTasks = document.createElement("button");
-  clearCompletedTasks.innerHTML = "Clear";
-  completedTasks.appendChild(completedTasksTitle);
-  completedTasks.appendChild(clearCompletedTasks);
-  newTaskContent.appendChild(completedTasks);
+  const completedTasks = document.createElement("div");
+  completedTasks.setAttribute("id", "completed-tasks");
+  const clearCompletedTasksBtn = document.createElement("button");
+  clearCompletedTasksBtn.setAttribute("id", "clear-completed-tasks-btn");
+  clearCompletedTasksBtn.innerHTML = "Clear";
+  completedTasksContainer.appendChild(completedTasksTitle);
+  completedTasksContainer.appendChild(completedTasks);
+  completedTasksContainer.appendChild(clearCompletedTasksBtn);
+  newTaskContent.appendChild(completedTasksContainer);
+  clearCompletedTasksBtn.addEventListener("click", clearCompletedTasks);
 }
 
 export function renderNewTask(newTask) {
@@ -65,7 +70,7 @@ export function renderNewTask(newTask) {
     .addEventListener("click", () => renderTaskDetails(newTask));
 
   const checkBox = newPost.querySelector(".completion-check");
-  const completedTasks = document.querySelector(".completed-tasks-container");
+  const completedTasks = document.querySelector("#completed-tasks");
   checkBox.addEventListener("change", (event) => {
     const taskElement = event.target.closest(".new-post"); // Get the task element
     if (event.target.checked) {
@@ -97,4 +102,9 @@ export function renderTaskDetails(newTask) {
     console.log("button clicked");
     taskPopup.style.display = "none";
   });
+}
+
+export function clearCompletedTasks() {
+  const completedTasks = document.querySelector("#completed-tasks");
+  completedTasks.innerHTML = "";
 }
