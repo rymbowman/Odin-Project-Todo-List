@@ -81,20 +81,27 @@ body {
 
 .new-post {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
-    border: 1px solid black;
-    outline: 1px solid black;
+    border-bottom: 1px solid black;
     font-family: "Poppins", sans-serif;
 }
 
 #info-btn{
     cursor: pointer;
     filter: brightness(150%);
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-#info-btn:hover {
-    filter: brightness(150%);
+#info-btn svg {
+    filter: inherit;
+    transition: filter .3s;
+}
+
+#info-btn:hover svg{
+    filter: brightness(180%);
 }
 
 .tasks-content {
@@ -112,6 +119,7 @@ body {
     display: none;
     background-color: aqua;
 }
+
 .incompleted-tasks-container{
     width: 65%;
     text-align: center;
