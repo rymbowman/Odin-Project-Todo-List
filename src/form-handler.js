@@ -9,6 +9,7 @@ export function createInput({
   maxLength,
   min,
   max,
+  required,
 }) {
   const input = document.createElement("input");
   input.setAttribute("type", type);
@@ -18,6 +19,7 @@ export function createInput({
   if (maxLength) input.maxLength = maxLength;
   if (min) input.min = min;
   if (max) input.max = max;
+  if (required) input.required = true;
   input.classList.add("form-inputs");
   return input;
 }
@@ -45,6 +47,7 @@ export function displayForm() {
       maxLength: 1,
       min: "1",
       max: "5",
+      required: true,
     },
     {
       type: "text",

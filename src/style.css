@@ -3,6 +3,10 @@
 
 body {
     background-color: #F4F4F4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-content {
@@ -93,12 +97,30 @@ body {
     transform: scale(1.05);
 }
 
-.new-post {
+.new-task {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
-    border-bottom: 1px solid black;
     font-family: "Poppins", sans-serif;
+    background-color: #50C878;
+    border-radius: 12px;
+}
+.high-priority-task {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    background-color: yellow;
+    border-radius: 12px;
+}
+.highest-priority-task {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    background-color: #FF573C;
+    border-radius: 12px;
+    border: 2px solid orange;
 }
 
 .info-btn{
@@ -121,12 +143,10 @@ body {
 .tasks-content {
     display: flex;
     width: 90%;
-    gap: 15px;
     justify-content: center;
-    align-items: center;
-    margin: auto;
     margin-top: 25px;
     font-family: "Poppins", sans-serif;
+    border: 1px solid black;
 }
 
 .task-details-popup-container {
@@ -139,7 +159,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    background-color: #1A3B5D;
+    background-color: rgba(26, 59, 93, .8);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     color: #fff;
@@ -185,16 +205,22 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+#incompleted-tasks-title {
+
+}
+
 .completed-tasks-container {
     width: 35%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     font-family: "Poppins", sans-serif;
-    border-left: 1px solid #1A3B5D;
 }
 
+#completed-tasks-title {
+}
 #clear-completed-tasks-btn{
     border: none;
     border-radius: 8px;

@@ -29,6 +29,7 @@ export function renderBody() {
   incompletedTasksContainer.classList.add("incompleted-tasks-container");
   const incompletedTasksTitle = document.createElement("h2");
   incompletedTasksTitle.innerHTML = "Tasks";
+  incompletedTasksTitle.setAttribute("id", "incompleted-tasks-title");
   const incompletedTasks = document.createElement("div");
   incompletedTasks.setAttribute("id", "incompleted-tasks");
   incompletedTasksContainer.appendChild(incompletedTasksTitle);
@@ -39,6 +40,7 @@ export function renderBody() {
   completedTasksContainer.classList.add("completed-tasks-container");
   const completedTasksTitle = document.createElement("h2");
   completedTasksTitle.innerHTML = "Complete!";
+  completedTasksTitle.setAttribute("id", "completed-tasks-title");
   const completedTasks = document.createElement("div");
   completedTasks.setAttribute("id", "completed-tasks");
   const clearCompletedTasksBtn = document.createElement("button");
@@ -55,7 +57,13 @@ export function renderNewTask(newTask) {
   const infoIcon =
     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);filter: brightness(150%);transition: filter 0.3s;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M11 11h2v6h-2zm0-4h2v2h-2z"></path></svg>';
   let newPost = document.createElement("div");
-  newPost.classList.add("new-post");
+  if (newTask.priority === 5) {
+    newPost.classList.add("highest-priority-task");
+  } else if (newTask.priority === 4) {
+    newPost.classList.add("high-priority-task");
+  } else {
+    newPost.classList.add("new-task");
+  }
   newPost.innerHTML = `<div>${newTask.title}</div>
               <button type="button" class="info-btn">
                   ${infoIcon}
