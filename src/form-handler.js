@@ -1,13 +1,23 @@
 import { CreateTask } from "./task";
 import { renderNewTask, renderTaskDetails } from "./render-document";
 
-export function createInput({ type, name, id, placeholder = "", maxLength }) {
+export function createInput({
+  type,
+  name,
+  id,
+  placeholder = "",
+  maxLength,
+  min,
+  max,
+}) {
   const input = document.createElement("input");
   input.setAttribute("type", type);
   input.setAttribute("name", name);
   input.setAttribute("id", id);
   if (placeholder) input.placeholder = placeholder;
   if (maxLength) input.maxLength = maxLength;
+  if (min) input.min = min;
+  if (max) input.max = max;
   input.classList.add("form-inputs");
   return input;
 }
@@ -33,6 +43,8 @@ export function displayForm() {
       id: "priority-input",
       placeholder: "1(low) - 5(high)",
       maxLength: 1,
+      min: "1",
+      max: "5",
     },
     {
       type: "text",

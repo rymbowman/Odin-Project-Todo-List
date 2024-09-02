@@ -65,9 +65,11 @@ export function renderNewTask(newTask) {
     ".incompleted-tasks-container"
   );
   incompletedTasks.appendChild(newPost);
-  const taskInfoBtn = document
-    .querySelector("#info-btn")
-    .addEventListener("click", () => renderTaskDetails(newTask));
+  const taskInfoBtns = document.querySelectorAll("#info-btn");
+  for (let i = 0; i < taskInfoBtns.length; i++) {
+    const infoBtn = taskInfoBtns[i];
+    infoBtn.addEventListener("click", () => renderTaskDetails(newTask));
+  }
 
   const checkBox = newPost.querySelector(".completion-check");
   const completedTasks = document.querySelector("#completed-tasks");
