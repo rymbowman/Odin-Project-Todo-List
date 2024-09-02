@@ -1,6 +1,6 @@
 import { displayForm } from "./form-handler";
 import { CreateTask } from "./task";
-
+import { taskItems } from "./form-handler";
 export function renderHeader() {
   const headerContent = document.querySelector(".header-content");
   const pageTitle = document.createElement("h1");
@@ -107,4 +107,5 @@ export function renderTaskDetails(newTask) {
 export function clearCompletedTasks() {
   const completedTasks = document.querySelector("#completed-tasks");
   completedTasks.innerHTML = "";
+  taskItems.length = 0;
 }

@@ -75,7 +75,7 @@ export function displayForm() {
 
   headerContent.appendChild(todoForm);
 }
-let taskItems = [];
+export let taskItems = [];
 export function formSubmit(event, form) {
   //prevents default action of form submitting before being able to acquire values of inputs
   event.preventDefault();
