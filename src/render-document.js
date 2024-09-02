@@ -79,8 +79,11 @@ export function renderNewTask(newTask) {
 
   const checkBox = newPost.querySelector(".completion-check");
   const completedTasks = document.querySelector("#completed-tasks");
+
   checkBox.addEventListener("change", (event) => {
-    const taskElement = event.target.closest(".new-post"); // Get the task element
+    const taskElement = event.target.closest(
+      ".new-task, .high-priority-task, .highest-priority-task"
+    ); // Get the task element
     if (event.target.checked) {
       console.log("Checked");
       incompletedTasks.removeChild(taskElement); // Remove from incomplete section
