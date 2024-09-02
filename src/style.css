@@ -101,7 +101,7 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
-#info-btn{
+.info-btn{
     cursor: pointer;
     filter: brightness(150%);
     padding: 0;
@@ -109,13 +109,13 @@ body {
     background: none;
 }
 
-#info-btn svg {
+.info-btn svg {
     filter: inherit;
     transition: filter .3s;
 }
 
-#info-btn:hover svg{
-    filter: brightness(180%);
+.info-btn:hover svg{
+    transform: scale(1.10);
 }
 
 .tasks-content {
@@ -134,13 +134,43 @@ body {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 5px;
-    background-color: aqua;
+    padding: 20px;
+    background-color: #1A3B5D;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+#close-popup-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #FF6F3C;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+#close-popup-btn:hover {
+    background-color: #FF3C3C;
 }
 
 .incompleted-tasks-container{
