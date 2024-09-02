@@ -75,7 +75,7 @@ export function displayForm() {
 
   headerContent.appendChild(todoForm);
 }
-
+let taskItems = [];
 export function formSubmit(event, form) {
   //prevents default action of form submitting before being able to acquire values of inputs
   event.preventDefault();
@@ -83,7 +83,7 @@ export function formSubmit(event, form) {
   //creates variables for each value from the form item
   let titleValue = document.getElementById("title-input").value;
   let dueDateValue = document.getElementById("date-input").value;
-  let priorityValue = document.getElementById("priority-input").value;
+  let priorityValue = parseInt(document.getElementById("priority-input").value);
   let notesValue = document.getElementById("notes-input").value;
 
   //sets variable 'newTask' equal to the object constructor for creating tasks
@@ -94,7 +94,13 @@ export function formSubmit(event, form) {
     notesValue
   );
 
-  renderNewTask(newTask);
+  const incompletedTasks = document.querySelector("#incompleted-tasks");
+  incompletedTasks.innerHTML = "";
+  taskItems.push(newTask);
+  taskItems.sort((a, b) => b.priority - a.priority);
+  console.log(taskItems);
+
+  taskItems.forEach((task) => renderNewTask(task));
 
   form.reset();
   form.remove();

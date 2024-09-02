@@ -25,17 +25,20 @@ export function renderHeader() {
 export function renderBody() {
   const newTaskContent = document.querySelector(".tasks-content");
 
-  const incompletedTasks = document.createElement("div");
-  incompletedTasks.classList.add("incompleted-tasks-container");
+  const incompletedTasksContainer = document.createElement("div");
+  incompletedTasksContainer.classList.add("incompleted-tasks-container");
   const incompletedTasksTitle = document.createElement("h2");
-  incompletedTasksTitle.innerHTML = "Incomplete";
-  incompletedTasks.appendChild(incompletedTasksTitle);
-  newTaskContent.appendChild(incompletedTasks);
+  incompletedTasksTitle.innerHTML = "Tasks";
+  const incompletedTasks = document.createElement("div");
+  incompletedTasks.setAttribute("id", "incompleted-tasks");
+  incompletedTasksContainer.appendChild(incompletedTasksTitle);
+  incompletedTasksContainer.appendChild(incompletedTasks);
+  newTaskContent.appendChild(incompletedTasksContainer);
 
   const completedTasksContainer = document.createElement("div");
   completedTasksContainer.classList.add("completed-tasks-container");
   const completedTasksTitle = document.createElement("h2");
-  completedTasksTitle.innerHTML = "Complete";
+  completedTasksTitle.innerHTML = "Complete!";
   const completedTasks = document.createElement("div");
   completedTasks.setAttribute("id", "completed-tasks");
   const clearCompletedTasksBtn = document.createElement("button");
@@ -61,9 +64,7 @@ export function renderNewTask(newTask) {
                   <input type="checkbox" class="completion-check">
                   <label>Complete</label>
               </div>`;
-  const incompletedTasks = document.querySelector(
-    ".incompleted-tasks-container"
-  );
+  const incompletedTasks = document.querySelector("#incompleted-tasks");
   incompletedTasks.appendChild(newPost);
   const taskInfoBtns = document.querySelectorAll("#info-btn");
   for (let i = 0; i < taskInfoBtns.length; i++) {
