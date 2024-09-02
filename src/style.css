@@ -129,12 +129,11 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
-.task-details-popup {
+.task-details-popup-container {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,6 +166,13 @@ body {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s ease;
+}
+
+.task-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
 }
 
 #close-popup-btn:hover {

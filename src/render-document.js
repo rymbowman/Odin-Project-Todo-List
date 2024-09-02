@@ -84,10 +84,12 @@ export function renderNewTask(newTask) {
 }
 
 export function renderTaskDetails(newTask) {
+  const taskPopupContainer = document.createElement("div");
+  taskPopupContainer.classList.add("task-details-popup-container");
   let taskPopup = document.createElement("div");
-  taskPopup.classList.add("task-details-popup");
+  taskPopup.classList.add("task-popup-content");
   taskPopup.innerHTML = `
-            <div id="popup-content">
+            <div>
                 <div>${newTask.dueDate}</div>
                 <div>${newTask.priority}</div>
                 <div>${newTask.notes}</div>
@@ -95,12 +97,13 @@ export function renderTaskDetails(newTask) {
                     Close
                 </button>
             </div>`;
-  document.body.appendChild(taskPopup);
-  taskPopup.style.display = "flex";
+  taskPopupContainer.appendChild(taskPopup);
+  document.body.appendChild(taskPopupContainer);
+  taskPopupContainer.style.display = "flex";
   const closeTaskInfoBtn = taskPopup.querySelector("#close-popup-btn");
   closeTaskInfoBtn.addEventListener("click", () => {
     console.log("button clicked");
-    taskPopup.style.display = "none";
+    taskPopupContainer.style.display = "none";
   });
 }
 
