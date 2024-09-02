@@ -57,7 +57,7 @@ export function renderNewTask(newTask) {
   let newPost = document.createElement("div");
   newPost.classList.add("new-post");
   newPost.innerHTML = `<div>${newTask.title}</div>
-              <button type="button" id="info-btn">
+              <button type="button" class="info-btn">
                   ${infoIcon}
               </button>
               <div>
@@ -66,11 +66,8 @@ export function renderNewTask(newTask) {
               </div>`;
   const incompletedTasks = document.querySelector("#incompleted-tasks");
   incompletedTasks.appendChild(newPost);
-  const taskInfoBtns = document.querySelectorAll("#info-btn");
-  for (let i = 0; i < taskInfoBtns.length; i++) {
-    const infoBtn = taskInfoBtns[i];
-    infoBtn.addEventListener("click", () => renderTaskDetails(newTask));
-  }
+  const taskInfoBtns = newPost.querySelector(".info-btn");
+  taskInfoBtns.addEventListener("click", () => renderTaskDetails(newTask));
 
   const checkBox = newPost.querySelector(".completion-check");
   const completedTasks = document.querySelector("#completed-tasks");
