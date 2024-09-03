@@ -107,6 +107,4 @@ export function formSubmit(event, form) {
 
   form.reset();
   form.remove();
-  /*
-   */
 }
