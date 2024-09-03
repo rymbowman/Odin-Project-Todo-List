@@ -81,6 +81,15 @@ export function renderNewTask(newTask) {
   const completedTasks = document.querySelector("#completed-tasks");
 
   checkBox.addEventListener("change", (event) => {
+    debugger;
+    //find task in [taskItems] with id = newTask.id
+    let checkedTaskIndex = taskItems.findIndex((currentTask) => {
+      if (currentTask.id === newTask.id) {
+        return true;
+      }
+    });
+    //remove this task from [taskItems]
+    taskItems.splice(checkedTaskIndex, 1);
     const taskElement = event.target.closest(
       ".new-task, .high-priority-task, .highest-priority-task"
     ); // Get the task element
@@ -95,6 +104,7 @@ export function renderNewTask(newTask) {
 }
 
 export function renderTaskDetails(newTask) {
+  debugger;
   const taskPopupContainer = document.createElement("div");
   taskPopupContainer.classList.add("task-details-popup-container");
   let taskPopup = document.createElement("div");
@@ -121,5 +131,4 @@ export function renderTaskDetails(newTask) {
 export function clearCompletedTasks() {
   const completedTasks = document.querySelector("#completed-tasks");
   completedTasks.innerHTML = "";
-  taskItems.length = 0;
 }
