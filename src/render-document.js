@@ -64,14 +64,27 @@ export function renderNewTask(newTask) {
   } else {
     newPost.classList.add("new-task");
   }
-  newPost.innerHTML = `<div>${newTask.title}</div>
-              <button type="button" class="info-btn">
-                  ${infoIcon}
-              </button>
-              <div>
-                  <input type="checkbox" class="completion-check">
-                  <label>Complete</label>
-              </div>`;
+
+  if (newTask.title.length > 0) {
+    newPost.innerHTML = `<div>${newTask.title}</div>
+  <button type="button" class="info-btn">
+      ${infoIcon}
+  </button>
+  <div>
+      <input type="checkbox" class="completion-check">
+      <label>Complete</label>
+  </div>`;
+  } else {
+    newPost.innerHTML = `<div>Task: ${newTask.id}</div>
+  <button type="button" class="info-btn">
+      ${infoIcon}
+  </button>
+  <div>
+      <input type="checkbox" class="completion-check">
+      <label>Complete</label>
+  </div>`;
+  }
+
   const incompletedTasks = document.querySelector("#incompleted-tasks");
   incompletedTasks.appendChild(newPost);
   const taskInfoBtns = newPost.querySelector(".info-btn");
